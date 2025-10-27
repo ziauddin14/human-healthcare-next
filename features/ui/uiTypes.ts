@@ -1,18 +1,12 @@
 /**
  * UI Feature Types
- * Defines TypeScript types for UI-related state (modals, navigation, etc.)
+ * Defines TypeScript types for UI-related state
  */
 
-export interface UIState {
-  isMenuOpen: boolean
-  activeModal: string | null
-  notifications: Notification[]
-}
+export type Theme = 'light' | 'dark'
 
-export interface Notification {
-  id: string
-  message: string
-  type: 'success' | 'error' | 'info' | 'warning'
-  timestamp: number
+export interface UIState {
+  theme: Theme
+  isMenuOpen: boolean
 }
 

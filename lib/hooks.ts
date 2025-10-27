@@ -1,11 +1,12 @@
 /**
  * Custom React Hooks
  * Shared custom hooks for the application
+ * 
+ * NOTE: For Redux hooks, use the ones from @/store instead
+ * This file can be used for other custom hooks
  */
-import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
-import type { RootState, AppDispatch } from '@/store/store'
+import { useAppDispatch, useAppSelector } from '@/store'
 
-// Typed hooks for Redux
-export const useAppDispatch = () => useDispatch<AppDispatch>()
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+// Re-export Redux hooks for convenience
+export { useAppDispatch, useAppSelector }
 
