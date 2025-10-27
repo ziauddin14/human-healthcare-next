@@ -3,46 +3,49 @@
 /**
  * Theme Toggle Component
  * Allows users to switch between light and dark modes
+ * Connected to Redux uiSlice for state management
  */
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '@/store'
+import { toggleTheme, setTheme } from '@/features/ui/uiSlice'
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false)
+  const dispatch = useAppDispatch()
+  const theme = useAppSelector((state) => state.ui.theme)
 
+  // Initialize theme from localStorage on mount
   useEffect(() => {
-    // Check if dark mode is set in localStorage or system preference
-    const savedTheme = localStorage.getItem('theme')
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
     
-    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark)
-    setIsDark(shouldBeDark)
-    
-    if (shouldBeDark) {
-      document.documentElement.classList.add('dark')
+    if (savedTheme) {
+      dispatch(setTheme(savedTheme))
     }
-  }, [])
+  }, [dispatch])
 
-  const toggleTheme = () => {
-    const newIsDark = !isDark
-    setIsDark(newIsDark)
-    
-    if (newIsDark) {
+  // Apply theme to document whenever it changes
+  useEffect(() => {
+    if (theme === 'dark') {
       document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
     } else {
       document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
     }
+    
+    // Save to localStorage
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme())
   }
 
   return (
     <button
-      onClick={toggleTheme}
-      className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-      aria-label="Toggle theme"
+      onClick={handleToggleTheme}
+      className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
     >
       <span className="text-gray-700 dark:text-gray-300 text-xl">
-        {isDark ? '☀️' : '🌙'}
+        {theme === 'dark' ? '☀️' : '🌙'}
       </span>
     </button>
   )
