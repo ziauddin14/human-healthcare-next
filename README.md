@@ -1,17 +1,43 @@
-# Project Name
+# Human Healthcare - Next.js Project
 
-## Project Overview
+A modern, scalable healthcare platform built with Next.js 14+, TypeScript, Tailwind CSS, and Redux Toolkit.
 
-Brief description of your project and its purpose.
+## 🚀 Tech Stack
 
-## Tech Stack
+- **Next.js 14+** - React framework with App Router
+- **TypeScript** - Type safety throughout
+- **Tailwind CSS** - Utility-first CSS framework
+- **Redux Toolkit** - State management with RTK Query support
+- **React Hook Form** - Performant form library
+- **Zod** - TypeScript-first schema validation
 
-- **Next.js 14+** - React framework
-- **React** - UI library
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling (optional)
+## 📁 Project Structure
 
-## Setup
+```
+human-healthcare-next/
+├── app/                          # Next.js App Router
+│   ├── layout.tsx               # Root layout
+│   ├── page.tsx                 # Home page
+│   ├── about/                   # About route
+│   ├── services/                # Services route
+│   ├── contact/                 # Contact route
+│   └── components/              # App components
+│       ├── Header.tsx
+│       ├── Footer.tsx
+│       ├── ThemeToggle.tsx
+│       └── ui/                  # Reusable UI components
+├── features/                     # Feature-based modules
+│   ├── contact/                 # Contact feature
+│   └── ui/                       # UI feature
+├── store/                        # Redux store
+├── lib/                          # Utilities
+├── public/                       # Static assets
+└── styles/                       # Additional styles
+```
+
+For detailed structure documentation, see [STRUCTURE.md](./STRUCTURE.md).
+
+## 🛠️ Setup
 
 Install dependencies:
 
@@ -19,7 +45,7 @@ Install dependencies:
 npm install
 ```
 
-## How to Run
+## 🏃 How to Run
 
 Start the development server:
 
@@ -29,19 +55,32 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Folder Structure
+Build for production:
 
-```
-├── app/
-│   ├── layout.tsx
-│   └── page.tsx
-├── components/
-├── public/
-├── lib/
-└── README.md
+```bash
+npm run build
+npm start
 ```
 
-## Deployment
+## 📄 Pages
+
+- **Home** (`/`) - Landing page
+- **About** (`/about`) - About page
+- **Services** (`/services`) - Services page
+- **Contact** (`/contact`) - Contact page with form
+
+## 🎨 Features
+
+- ✅ Next.js 14 App Router
+- ✅ TypeScript strict mode
+- ✅ Tailwind CSS with dark mode
+- ✅ Redux Toolkit with feature-based architecture
+- ✅ Custom typed hooks for Redux
+- ✅ Responsive design
+- ✅ SEO-friendly structure
+- ✅ Scalable folder architecture
+
+## 🚢 Deployment
 
 ### Deploy to Vercel
 
@@ -52,17 +91,44 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 Your site will be live with a `.vercel.app` domain.
 
-## TODO
+### Environment Variables
 
-### Pages
-- [ ] Home page (`/`)
-- [ ] About page (`/about`)
-- [ ] Services page (`/services`)
-- [ ] Contact page (`/contact`)
+Create a `.env.local` file for local development:
 
-### Features
-- [ ] Add additional features as needed
+```env
+NEXT_PUBLIC_API_URL=your_api_url
+```
+
+## 📝 Development Guidelines
+
+- Use TypeScript for all new files
+- Follow the feature-based architecture for state management
+- Use Tailwind CSS for styling
+- Keep components in `app/components/` or `app/components/ui/`
+- Add new Redux slices in `features/` with co-located types
+- Use typed hooks from `lib/hooks.ts` for Redux
+
+## 🔧 Key Files
+
+- `app/layout.tsx` - Root layout with Redux Provider
+- `store/store.ts` - Redux store configuration
+- `lib/redux-provider.tsx` - Redux Provider wrapper
+- `lib/hooks.ts` - Typed Redux hooks
+- `tailwind.config.js` - Tailwind configuration
+
+## 📚 Additional Documentation
+
+- [STRUCTURE.md](./STRUCTURE.md) - Detailed folder structure guide
+- [TODO](./TODO.md) - Development checklist
+
+## 🧪 Testing
+
+Run linting:
+
+```bash
+npm run lint
+```
 
 ---
 
-Built with Next.js 14+
+Built with ❤️ using Next.js 14+
