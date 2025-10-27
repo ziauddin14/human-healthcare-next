@@ -1,55 +1,74 @@
-# Human Healthcare - Next.js Project
+# Human Healthcare — Next.js Redesign (Technical Test)
 
-A modern, scalable healthcare platform built with Next.js 14+, TypeScript, Tailwind CSS, and Redux Toolkit.
+## 📌 Overview
 
-## 🚀 Tech Stack
+This project is a redesign of [human-healthcare.com](https://human-healthcare.com/) using **Next.js 14**, built as part of a technical assessment.  
+The goal is to implement a scalable, maintainable, and visually modern web app with best practices in architecture, state management, and UI/UX.
 
-- **Next.js 14+** - React framework with App Router
-- **TypeScript** - Type safety throughout
-- **Tailwind CSS** - Utility-first CSS framework
-- **Redux Toolkit** - State management with RTK Query support
-- **React Hook Form** - Performant form library
-- **Zod** - TypeScript-first schema validation
+## 🧠 Tech Stack
 
-## 📁 Project Structure
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **State Management:** Redux Toolkit
+- **Form Handling:** React Hook Form + Zod
+- **Deployment (optional):** Vercel
+
+## 🏗️ Folder Structure
 
 ```
 human-healthcare-next/
-├── app/                          # Next.js App Router
-│   ├── layout.tsx               # Root layout
-│   ├── page.tsx                 # Home page
-│   ├── about/                   # About route
-│   ├── services/                # Services route
-│   ├── contact/                 # Contact route
-│   └── components/              # App components
-│       ├── Header.tsx
-│       ├── Footer.tsx
-│       ├── ThemeToggle.tsx
-│       └── ui/                  # Reusable UI components
-├── features/                     # Feature-based modules
-│   ├── contact/                 # Contact feature
-│   └── ui/                       # UI feature
-├── store/                        # Redux store
-├── lib/                          # Utilities
-├── public/                       # Static assets
-└── styles/                       # Additional styles
+├── app/
+│   ├── page.tsx                  # Home page
+│   ├── layout.tsx                # Root layout with providers
+│   ├── globals.css               # Global styles
+│   ├── about/                    # About page route
+│   │   └── page.tsx
+│   ├── services/                 # Services page route
+│   │   └── page.tsx
+│   ├── contact/                  # Contact page route
+│   │   └── page.tsx
+│   ├── api/                      # API routes
+│   │   └── contact/
+│   │       └── route.ts          # Contact form API endpoint
+│   └── components/
+│       ├── ThemeToggle.tsx       # Dark mode toggle
+│       └── ui/                    # Reusable UI components
+│           ├── Button.tsx
+│           └── Card.tsx
+├── components/
+│   └── layout/
+│       ├── Header.tsx            # Navigation header
+│       └── Footer.tsx             # Site footer
+├── features/                      # Feature-based modules
+│   ├── contact/
+│   │   ├── contactSlice.ts      # Redux slice for contact
+│   │   └── contactTypes.ts      # TypeScript types
+│   └── ui/
+│       ├── uiSlice.ts            # UI state management
+│       └── uiTypes.ts            # UI types
+├── store/                         # Redux store configuration
+│   ├── store.ts                  # Main store setup
+│   ├── hooks.ts                  # Typed Redux hooks
+│   └── index.ts                  # Store exports
+├── lib/                           # Utility functions
+│   ├── utils.ts                  # Helper functions
+│   ├── hooks.ts                  # Custom hooks
+│   └── redux-provider.tsx        # Redux Provider wrapper
+└── public/                        # Static assets
 ```
 
-For detailed structure documentation, see [STRUCTURE.md](./STRUCTURE.md).
-
-## 🛠️ Setup
-
-Install dependencies:
+## ⚙️ Setup Instructions
 
 ```bash
+# Clone the repository
+git clone <repo-url>
+cd human-healthcare-next
+
+# Install dependencies
 npm install
-```
 
-## 🏃 How to Run
-
-Start the development server:
-
-```bash
+# Run development server
 npm run dev
 ```
 
@@ -62,25 +81,40 @@ npm run build
 npm start
 ```
 
-## 📄 Pages
+## 🌐 Features Implemented
 
-- **Home** (`/`) - Landing page
-- **About** (`/about`) - About page
-- **Services** (`/services`) - Services page
-- **Contact** (`/contact`) - Contact page with form
+✅ **Global Header & Footer** - Navigation with theme toggle and responsive mobile menu
 
-## 🎨 Features
+✅ **Responsive Design** - Fully responsive layout with accessibility support
 
-- ✅ Next.js 14 App Router
-- ✅ TypeScript strict mode
-- ✅ Tailwind CSS with dark mode
-- ✅ Redux Toolkit with feature-based architecture
-- ✅ Custom typed hooks for Redux
-- ✅ Responsive design
-- ✅ SEO-friendly structure
-- ✅ Scalable folder architecture
+✅ **Pages** - Home, About, Services, Contact with modern UI
 
-## 🚢 Deployment
+✅ **Redux State Management** - Feature-based architecture with typed hooks
+
+✅ **Contact Form** - Fully validated form with React Hook Form + Zod, integrated with API
+
+✅ **Dark/Light Mode** - Theme switching with localStorage persistence
+
+✅ **Clean Architecture** - Scalable folder structure following Next.js 14 best practices
+
+## 📋 Sitemap Audit
+
+| Existing URL | New Route | Status | Notes |
+|-------------|-----------|--------|-------|
+| `/` | `/` | ✅ Done | Hero section, services overview, CTA redesigned |
+| `/about` | `/about` | ✅ Done | Company mission, stats, key features |
+| `/services` | `/services` | ✅ Done | Comprehensive service listings with benefits |
+| `/contact` | `/contact` | ✅ Done | Form with validation + Redux integration |
+
+## 🧩 Assumptions
+
+- All textual content was derived from the live site [human-healthcare.com](https://human-healthcare.com/) for content parity
+- Placeholder text was used where content was unclear
+- No proprietary backend logic was replicated (form uses mock API)
+- API endpoint simulates 1-second delay for realistic UX
+- Contact form submission is for demonstration purposes
+
+## 🚀 Deployment (Optional)
 
 ### Deploy to Vercel
 
@@ -104,22 +138,18 @@ NEXT_PUBLIC_API_URL=your_api_url
 - Use TypeScript for all new files
 - Follow the feature-based architecture for state management
 - Use Tailwind CSS for styling
-- Keep components in `app/components/` or `app/components/ui/`
+- Keep components in `app/components/` or `components/layout/`
 - Add new Redux slices in `features/` with co-located types
-- Use typed hooks from `lib/hooks.ts` for Redux
+- Use typed hooks from `@/store` for Redux
 
 ## 🔧 Key Files
 
 - `app/layout.tsx` - Root layout with Redux Provider
 - `store/store.ts` - Redux store configuration
-- `lib/redux-provider.tsx` - Redux Provider wrapper
-- `lib/hooks.ts` - Typed Redux hooks
-- `tailwind.config.js` - Tailwind configuration
-
-## 📚 Additional Documentation
-
-- [STRUCTURE.md](./STRUCTURE.md) - Detailed folder structure guide
-- [TODO](./TODO.md) - Development checklist
+- `features/contact/contactSlice.ts` - Contact form state management
+- `app/contact/page.tsx` - Contact form with validation
+- `app/api/contact/route.ts` - Mock API endpoint
+- `tailwind.config.js` - Tailwind CSS configuration
 
 ## 🧪 Testing
 
@@ -128,6 +158,10 @@ Run linting:
 ```bash
 npm run lint
 ```
+
+## ✍️ Author
+
+Built as part of Next.js Developer technical assessment.
 
 ---
 

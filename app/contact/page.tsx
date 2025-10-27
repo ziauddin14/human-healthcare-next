@@ -48,21 +48,21 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
       {/* Hero Section */}
-      <section className="text-center mb-16">
-        <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+      <section className="text-center mb-12 md:mb-20">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 bg-foreground transition-colors duration-300">
           Connect With Human Healthcare
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-4 transition-colors duration-300">
           We're here to answer your questions and help you get started
         </p>
       </section>
 
       {/* Success Message */}
       {success && (
-        <div className="max-w-2xl mx-auto mb-8 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-          <p className="text-green-800 dark:text-green-200 font-semibold">
+        <div className="max-w-2xl mx-auto mb-8 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-8 shadow-md">
+          <p className="text-green-800 dark:text-green-200 font-semibold text-lg">
             Thank you! We will get back to you soon.
           </p>
         </div>
@@ -70,21 +70,21 @@ export default function ContactPage() {
 
       {/* Error Message */}
       {error && (
-        <div className="max-w-2xl mx-auto mb-8 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-          <p className="text-red-800 dark:text-red-200 font-semibold">
+        <div className="max-w-2xl mx-auto mb-8 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl p-8 shadow-md">
+          <p className="text-red-800 dark:text-red-200 font-semibold text-lg">
             Something went wrong. Please try again.
           </p>
         </div>
       )}
 
       {/* Contact Form */}
-      <section className="max-w-2xl mx-auto mb-16">
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+      <section className="max-w-2xl mx-auto mb-12 md:mb-20">
+        <div className="bg-white dark:bg-slate-800 p-6 md:p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 text-gray-900 dark:text-white">
             Send Us a Message
           </h2>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
             {/* Name Field */}
             <div>
               <label
@@ -98,7 +98,7 @@ export default function ContactPage() {
                 type="text"
                 id="name"
                 aria-invalid={errors.name ? 'true' : 'false'}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-6 py-4 rounded-xl border transition-all duration-300 ${
                   errors.name
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                     : 'border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500'
@@ -197,7 +197,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors ${
+              className={`w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-5 px-8 rounded-2xl transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
                 isLoading ? 'opacity-75 cursor-not-allowed' : ''
               } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
             >
@@ -234,7 +234,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Information */}
-      <section className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
+      <section className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-800 dark:to-slate-900 p-12 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
         <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
           Or Contact Us Directly
         </h2>

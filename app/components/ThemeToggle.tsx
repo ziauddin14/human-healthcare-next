@@ -24,10 +24,14 @@ export default function ThemeToggle() {
 
   // Apply theme to document whenever it changes
   useEffect(() => {
+    const root = document.documentElement
+    
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
+      root.classList.add('dark')
+      root.classList.remove('light')
     } else {
-      document.documentElement.classList.remove('dark')
+      root.classList.add('light')
+      root.classList.remove('dark')
     }
     
     // Save to localStorage
@@ -41,10 +45,10 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={handleToggleTheme}
-      className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      className="p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-500 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
     >
-      <span className="text-gray-700 dark:text-gray-300 text-xl">
+      <span className="text-2xl transition-transform duration-500 ease-in-out inline-block transform">
         {theme === 'dark' ? '☀️' : '🌙'}
       </span>
     </button>
