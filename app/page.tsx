@@ -5,8 +5,21 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { Skeleton } from '@/app/components/ui/skeleton'
+import { useState, useEffect } from 'react'
 
 export default function HomePage() {
+  const [isServicesLoaded, setIsServicesLoaded] = useState(false)
+
+  useEffect(() => {
+    // Simulate loading delay for the services section
+    const timer = setTimeout(() => {
+      setIsServicesLoaded(true)
+    }, 1500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -17,7 +30,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 md:mb-8 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight"
           >
             Healthcare at Your Doorstep
           </motion.h1>
@@ -25,7 +38,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-blue-100 dark:text-gray-300 mb-8 md:mb-12 max-w-4xl mx-auto font-light leading-relaxed px-4"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-blue-100 dark:text-gray-300 mb-8 md:mb-12 max-w-4xl mx-auto font-light leading-relaxed px-4"
           >
             Seamless, Doctor-Led Care at Home, So You Can Focus on What Matters Most – Even From Abroad.
           </motion.p>
@@ -69,50 +82,69 @@ export default function HomePage() {
           </motion.h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {[
-              {
-                icon: "🏥",
-                title: "Doctor Home Visits",
-                description: "Get professional consultations without the hassle of hospital trips.",
-                color: "blue"
-              },
-              {
-                icon: "👩‍⚕️",
-                title: "Nursing Care at Home",
-                description: "Trained nurses for chronic conditions & more.",
-                color: "green"
-              },
-              {
-                icon: "🏋️‍♂️",
-                title: "Physio at Home",
-                description: "Regain mobility & strength with expert rehabilitation.",
-                color: "purple"
-              },
-              {
-                icon: "📊",
-                title: "Health Monitoring & Support",
-                description: "Stay updated on your loved one's health anytime.",
-                color: "orange"
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className={`bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:border-blue-300 dark:hover:border-blue-600`}
-              >
-                <div className="text-5xl mb-6">{service.icon}</div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">
-                  {service.title}
-                </h3>
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
-            ))}
+            {!isServicesLoaded ? (
+              // Skeleton loaders
+              Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md">
+                  <Skeleton className="w-16 h-16 mb-6 rounded-full" />
+                  <Skeleton className="w-3/4 h-6 mb-4" />
+                  <div className="space-y-2">
+                    <Skeleton className="w-full h-4" />
+                    <Skeleton className="w-5/6 h-4" />
+                    <Skeleton className="w-4/5 h-4" />
+                  </div>
+                </div>
+              ))
+            ) : (
+              [
+                {
+                  icon: "🏥",
+                  title: "Doctor Home Visits",
+                  description: "Get professional consultations without the hassle of hospital trips.",
+                  color: "blue"
+                },
+                {
+                  icon: "👩‍⚕️",
+                  title: "Nursing Care at Home",
+                  description: "Trained nurses for chronic conditions & more.",
+                  color: "green"
+                },
+                {
+                  icon: "🏋️‍♂️",
+                  title: "Physio at Home",
+                  description: "Regain mobility & strength with expert rehabilitation.",
+                  color: "purple"
+                },
+                {
+                  icon: "📊",
+                  title: "Health Monitoring & Support",
+                  description: "Stay updated on your loved one's health anytime.",
+                  color: "orange"
+                }
+              ].map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    scale: 1.03, 
+                    boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
+                    y: -8
+                  }}
+                  className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 transition-all duration-300 ease-out hover:border-blue-300 dark:hover:border-blue-600"
+                >
+                  <div className="text-5xl mb-6">{service.icon}</div>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {service.description}
+                  </p>
+                </motion.div>
+              ))
+            )}
           </div>
         </div>
       </section>

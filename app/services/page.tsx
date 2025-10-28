@@ -5,8 +5,29 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { Skeleton } from '@/app/components/ui/skeleton'
+import { useState, useEffect } from 'react'
 
 export default function ServicesPage() {
+  const [isMainServicesLoaded, setIsMainServicesLoaded] = useState(false)
+  const [isAdditionalServicesLoaded, setIsAdditionalServicesLoaded] = useState(false)
+
+  useEffect(() => {
+    // Simulate loading delays for different sections
+    const mainTimer = setTimeout(() => {
+      setIsMainServicesLoaded(true)
+    }, 1200)
+
+    const additionalTimer = setTimeout(() => {
+      setIsAdditionalServicesLoaded(true)
+    }, 1800)
+
+    return () => {
+      clearTimeout(mainTimer)
+      clearTimeout(additionalTimer)
+    }
+  }, [])
+
   return (
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
       {/* Hero Section */}
@@ -31,50 +52,70 @@ export default function ServicesPage() {
 
       {/* Main Services */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-20">
-        {[
-          {
-            title: "Home-Based Comprehensive Care",
-            description: "Health expertise that meets you where you are. Personalized care, tailored to all your needs, brought right to your doorstep.",
-            icon: "🏠",
-            color: "blue"
-          },
-          {
-            title: "American and UK Specialists Opinion",
-            description: "Access American, Canadian, and UK medical expertise. From cardiology, neurology, gastroenterology to primary care and geriatrics.",
-            icon: "🌍",
-            color: "indigo"
-          },
-          {
-            title: "Regular Health Screenings",
-            description: "Stay proactive with inclusive annual screenings and labs to keep you ahead in your health journey.",
-            icon: "🔍",
-            color: "purple"
-          },
-          {
-            title: "No Lab Visits Required",
-            description: "Our in-home phlebotomy service takes care of blood tests, bringing the lab to your comfort zone.",
-            icon: "🧪",
-            color: "orange"
-          }
-        ].map((service, index) => (
-          <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8, scale: 1.02 }}
-                className={`bg-white dark:bg-gray-900 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600`}
-          >
-            <div className="text-4xl mb-4">{service.icon}</div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-slate-900 dark:text-slate-100">
-              {service.title}
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              {service.description}
-            </p>
-          </motion.div>
-        ))}
+        {!isMainServicesLoaded ? (
+          // Skeleton loaders for main services
+          Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className="bg-white dark:bg-gray-900 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
+              <Skeleton className="w-16 h-16 mb-4 rounded-full" />
+              <Skeleton className="w-3/4 h-8 mb-6" />
+              <div className="space-y-3">
+                <Skeleton className="w-full h-4" />
+                <Skeleton className="w-full h-4" />
+                <Skeleton className="w-5/6 h-4" />
+                <Skeleton className="w-4/5 h-4" />
+              </div>
+            </div>
+          ))
+        ) : (
+          [
+            {
+              title: "Home-Based Comprehensive Care",
+              description: "Health expertise that meets you where you are. Personalized care, tailored to all your needs, brought right to your doorstep.",
+              icon: "🏠",
+              color: "blue"
+            },
+            {
+              title: "American and UK Specialists Opinion",
+              description: "Access American, Canadian, and UK medical expertise. From cardiology, neurology, gastroenterology to primary care and geriatrics.",
+              icon: "🌍",
+              color: "indigo"
+            },
+            {
+              title: "Regular Health Screenings",
+              description: "Stay proactive with inclusive annual screenings and labs to keep you ahead in your health journey.",
+              icon: "🔍",
+              color: "purple"
+            },
+            {
+              title: "No Lab Visits Required",
+              description: "Our in-home phlebotomy service takes care of blood tests, bringing the lab to your comfort zone.",
+              icon: "🧪",
+              color: "orange"
+            }
+          ].map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                scale: 1.03, 
+                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
+                y: -8
+              }}
+              className="bg-white dark:bg-gray-900 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 transition-all duration-300 ease-out border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600"
+            >
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-slate-900 dark:text-slate-100">
+                {service.title}
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                {service.description}
+              </p>
+            </motion.div>
+          ))
+        )}
       </section>
 
       {/* Additional Services */}
@@ -89,44 +130,63 @@ export default function ServicesPage() {
           Additional Benefits
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {[
-            {
-              title: "Hospital Support",
-              description: "During hospital admissions, we're by your side offering attendance and support on behalf of family members.",
-              icon: "🏥",
-              color: "blue"
-            },
-            {
-              title: "Instant Messaging",
-              description: "Reach out to our medical team anytime through our instant messaging service for questions or concerns.",
-              icon: "💬",
-              color: "indigo"
-            },
-            {
-              title: "Flexible Healthcare",
-              description: "Choose from in-person visits or connect virtually, as your lifestyle demands.",
-              icon: "📱",
-              color: "purple"
-            }
-          ].map((benefit, index) => (
-            <motion.div
-              key={benefit.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className={`p-6 md:p-8 lg:p-10 bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600`}
-            >
-              <div className="text-4xl mb-4">{benefit.icon}</div>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">
-                {benefit.title}
-              </h3>
-              <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                {benefit.description}
-              </p>
-            </motion.div>
-          ))}
+          {!isAdditionalServicesLoaded ? (
+            // Skeleton loaders for additional services
+            Array.from({ length: 3 }).map((_, index) => (
+              <div key={index} className="p-6 md:p-8 lg:p-10 bg-white dark:bg-gray-900 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
+                <Skeleton className="w-16 h-16 mb-4 rounded-full" />
+                <Skeleton className="w-3/4 h-6 mb-4" />
+                <div className="space-y-3">
+                  <Skeleton className="w-full h-4" />
+                  <Skeleton className="w-full h-4" />
+                  <Skeleton className="w-5/6 h-4" />
+                </div>
+              </div>
+            ))
+          ) : (
+            [
+              {
+                title: "Hospital Support",
+                description: "During hospital admissions, we're by your side offering attendance and support on behalf of family members.",
+                icon: "🏥",
+                color: "blue"
+              },
+              {
+                title: "Instant Messaging",
+                description: "Reach out to our medical team anytime through our instant messaging service for questions or concerns.",
+                icon: "💬",
+                color: "indigo"
+              },
+              {
+                title: "Flexible Healthcare",
+                description: "Choose from in-person visits or connect virtually, as your lifestyle demands.",
+                icon: "📱",
+                color: "purple"
+              }
+            ].map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  scale: 1.03, 
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
+                  y: -8
+                }}
+                className="p-6 md:p-8 lg:p-10 bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-400/10 transition-all duration-300 ease-out border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600"
+              >
+                <div className="text-4xl mb-4">{benefit.icon}</div>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">
+                  {benefit.title}
+                </h3>
+                <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </motion.div>
+            ))
+          )}
         </div>
       </section>
 

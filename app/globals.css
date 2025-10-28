@@ -75,3 +75,11 @@
     @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out;
   }
 }
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.8s infinite linear;
+}

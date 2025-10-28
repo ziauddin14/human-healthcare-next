@@ -9,8 +9,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { submitContactForm, resetContact } from '@/features/contact/contactSlice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Skeleton } from '@/app/components/ui/skeleton'
 
 // Zod validation schema
 const contactFormSchema = z.object({
@@ -25,6 +26,16 @@ type ContactFormData = z.infer<typeof contactFormSchema>
 export default function ContactPage() {
   const dispatch = useAppDispatch()
   const { isLoading, success, error } = useAppSelector((state) => state.contact)
+  const [isContactInfoLoaded, setIsContactInfoLoaded] = useState(false)
+
+  useEffect(() => {
+    // Simulate loading delay for contact info
+    const timer = setTimeout(() => {
+      setIsContactInfoLoaded(true)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
   
   const {
     register,
@@ -270,31 +281,53 @@ export default function ContactPage() {
         viewport={{ once: true }}
         className="bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-800 dark:to-slate-900 p-12 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700"
       >
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-slate-900 dark:text-slate-100">
-          Or Contact Us Directly
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
-              📞 Phone
-            </h3>
-            <p className="text-slate-600 dark:text-slate-300">
-              <a href="tel:+923192060174" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
-                +92 319-2060174
-              </a>
-            </p>
+        {!isContactInfoLoaded ? (
+          <div className="space-y-6">
+            <Skeleton className="w-64 h-8 mb-6" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <Skeleton className="w-20 h-6" />
+                <Skeleton className="w-40 h-5" />
+              </div>
+              <div className="space-y-3">
+                <Skeleton className="w-16 h-6" />
+                <Skeleton className="w-48 h-5" />
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
-              📧 Email
-            </h3>
-            <p className="text-slate-600 dark:text-slate-300">
-              <a href="mailto:service@human-healthcare.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
-                service@human-healthcare.com
-              </a>
-            </p>
-          </div>
-        </div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          >
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-slate-900 dark:text-slate-100">
+              Or Contact Us Directly
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                  📞 Phone
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300">
+                  <a href="tel:+923192060174" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                    +92 319-2060174
+                  </a>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                  📧 Email
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300">
+                  <a href="mailto:service@human-healthcare.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                    service@human-healthcare.com
+                  </a>
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </motion.section>
     </div>
   )
