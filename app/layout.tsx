@@ -19,15 +19,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="light">
-      <body className={`${inter.variable} font-sans transition-colors duration-300`}>
+    <html lang="en" className="light" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300`}>
         <Provider store={store}>
           <ThemeProvider>
-            <Header />
-            <main className="min-h-screen bg-background text-foreground transition-colors duration-300">
-              {children}
-            </main>
-            <Footer />
+            <div className="min-h-screen">
+              <Header />
+              <main className="min-h-screen">
+                {children}
+              </main>
+              <Footer />
+            </div>
           </ThemeProvider>
         </Provider>
       </body>

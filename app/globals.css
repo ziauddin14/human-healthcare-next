@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @layer base {
-  /* Responsive font sizes */
+  /* Responsive font sizes - proper scaling */
   html {
-    font-size: 16px;
+    font-size: 14px;
   }
   
-  @media (min-width: 1024px) {
+  @media (min-width: 640px) {
     html {
       font-size: 15px;
     }
@@ -14,13 +14,19 @@
   
   @media (min-width: 768px) {
     html {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   
-  @media (min-width: 640px) {
+  @media (min-width: 1024px) {
     html {
-      font-size: 13px;
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    html {
+      font-size: 17px;
     }
   }
   
@@ -42,12 +48,30 @@
   }
   
   p {
-    @apply text-base;
+    @apply text-sm sm:text-base md:text-lg;
+  }
+  
+  /* Smooth theme transitions */
+  * {
+    @apply transition-colors duration-300;
+  }
+  
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out;
   }
 }

@@ -2,116 +2,168 @@
  * Services Page
  * Comprehensive Healthcare Services
  */
+'use client'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function ServicesPage() {
   return (
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
       {/* Hero Section */}
       <section className="text-center mb-12 md:mb-20">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 bg-foreground transition-colors duration-300">
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 text-slate-900 dark:text-slate-100"
+        >
           Our Services
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-4 transition-colors duration-300">
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-4"
+        >
           Comprehensive healthcare services brought to your doorstep
-        </p>
+        </motion.p>
       </section>
 
       {/* Main Services */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-20">
-        <div className="bg-white dark:bg-slate-800 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 md:hover:-translate-y-2 hover:scale-105 border border-blue-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-            Home-Based Comprehensive Care
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Health expertise that meets you where you are. Personalized care, tailored to all your needs, brought right to your doorstep.
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 border border-indigo-100 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-            American and UK Specialists Opinion
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Access American, Canadian, and UK medical expertise. From cardiology, neurology, gastroenterology to primary care and geriatrics.
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 border border-purple-100 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-            Regular Health Screenings
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Stay proactive with inclusive annual screenings and labs to keep you ahead in your health journey.
-          </p>
-        </div>
-
-        <div className="bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 border border-orange-100 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-            No Lab Visits Required
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Our in-home phlebotomy service takes care of blood tests, bringing the lab to your comfort zone.
-          </p>
-        </div>
+        {[
+          {
+            title: "Home-Based Comprehensive Care",
+            description: "Health expertise that meets you where you are. Personalized care, tailored to all your needs, brought right to your doorstep.",
+            icon: "🏠",
+            color: "blue"
+          },
+          {
+            title: "American and UK Specialists Opinion",
+            description: "Access American, Canadian, and UK medical expertise. From cardiology, neurology, gastroenterology to primary care and geriatrics.",
+            icon: "🌍",
+            color: "indigo"
+          },
+          {
+            title: "Regular Health Screenings",
+            description: "Stay proactive with inclusive annual screenings and labs to keep you ahead in your health journey.",
+            icon: "🔍",
+            color: "purple"
+          },
+          {
+            title: "No Lab Visits Required",
+            description: "Our in-home phlebotomy service takes care of blood tests, bringing the lab to your comfort zone.",
+            icon: "🧪",
+            color: "orange"
+          }
+        ].map((service, index) => (
+          <motion.div
+            key={service.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -8, scale: 1.02 }}
+                className={`bg-white dark:bg-gray-900 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600`}
+          >
+            <div className="text-4xl mb-4">{service.icon}</div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-slate-900 dark:text-slate-100">
+              {service.title}
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+              {service.description}
+            </p>
+          </motion.div>
+        ))}
       </section>
 
       {/* Additional Services */}
       <section className="mb-12 md:mb-20">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-gray-900 dark:text-white">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-12 text-slate-900 dark:text-slate-100"
+        >
           Additional Benefits
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          <div className="p-6 md:p-8 lg:p-10 bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600">
-            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-              Hospital Support
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              During hospital admissions, we're by your side offering attendance and support on behalf of family members.
-            </p>
-          </div>
-
-          <div className="p-10 bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600">
-            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-              Instant Messaging
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Reach out to our medical team anytime through our instant messaging service for questions or concerns.
-            </p>
-          </div>
-
-          <div className="p-10 bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600">
-            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-              Flexible Healthcare
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Choose from in-person visits or connect virtually, as your lifestyle demands.
-            </p>
-          </div>
+          {[
+            {
+              title: "Hospital Support",
+              description: "During hospital admissions, we're by your side offering attendance and support on behalf of family members.",
+              icon: "🏥",
+              color: "blue"
+            },
+            {
+              title: "Instant Messaging",
+              description: "Reach out to our medical team anytime through our instant messaging service for questions or concerns.",
+              icon: "💬",
+              color: "indigo"
+            },
+            {
+              title: "Flexible Healthcare",
+              description: "Choose from in-person visits or connect virtually, as your lifestyle demands.",
+              icon: "📱",
+              color: "purple"
+            }
+          ].map((benefit, index) => (
+            <motion.div
+              key={benefit.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className={`p-6 md:p-8 lg:p-10 bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 ease-out border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600`}
+            >
+              <div className="text-4xl mb-4">{benefit.icon}</div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100">
+                {benefit.title}
+              </h3>
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                {benefit.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-16 rounded-2xl shadow-xl text-center">
-        <h2 className="text-5xl font-bold mb-8">Ready to Get Started?</h2>
-        <p className="text-2xl mb-10 font-light">
-          Choose from our flexible pricing plans designed to meet your healthcare needs.
-        </p>
-        <div className="flex gap-6 justify-center">
-          <Link
-            href="/contact"
-            className="bg-gradient-to-r from-white to-blue-50 text-blue-600 font-bold px-10 py-5 rounded-2xl hover:from-blue-50 hover:to-blue-100 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-blue-200"
-          >
-            Contact Us
-          </Link>
-          <Link
-            href="/about"
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold px-10 py-5 rounded-2xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            Learn More
-          </Link>
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-16 rounded-2xl shadow-xl text-center relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-blue-800/90"></div>
+        <div className="relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8">Ready to Get Started?</h2>
+          <p className="text-lg sm:text-xl md:text-2xl mb-10 font-light">
+            Choose from our flexible pricing plans designed to meet your healthcare needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/contact"
+                className="inline-block bg-gradient-to-r from-white to-blue-50 text-blue-600 font-bold px-10 py-5 rounded-2xl hover:from-blue-50 hover:to-blue-100 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-blue-200 focus:outline-none focus:ring-4 focus:ring-white/50"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/about"
+                className="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold px-10 py-5 rounded-2xl hover:from-blue-700 hover:to-blue-900 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+              >
+                Learn More
+              </Link>
+            </motion.div>
+          </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }

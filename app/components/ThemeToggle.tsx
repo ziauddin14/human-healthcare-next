@@ -1,9 +1,9 @@
 'use client'
 
-/**
- * Theme Toggle Component
- * Allows users to switch between light and dark modes
- * Connected to Redux uiSlice for state management
+/*
+  Theme Toggle Component
+  Allows users to switch between light and dark modes
+ Connected to Redux uiSlice for state management
  */
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/store'
@@ -45,10 +45,10 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={handleToggleTheme}
-      className="p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-500 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      className="p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:scale-105 active:scale-95"
       aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
     >
-      <span className="text-2xl transition-transform duration-500 ease-in-out inline-block transform">
+      <span className="text-2xl transition-all duration-300 ease-in-out inline-block transform hover:rotate-12">
         {theme === 'dark' ? '☀️' : '🌙'}
       </span>
     </button>
