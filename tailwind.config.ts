@@ -71,7 +71,7 @@ const config: Config = {
       },
     },
   },
-  darkMode: "class",
+  darkMode: ["class", '[data-mode="dark"]'],
 };
 
 export default config;

@@ -1,84 +1,102 @@
 @import "tailwindcss";
 
-@layer base {
-  /* Responsive font sizes - proper scaling */
+  /* Base transitions and color-scheme only (colors applied at end of file) */
+  @layer base {
+    html {
+      @apply transition-colors duration-300;
+    }
+    body {
+      @apply transition-colors duration-300 font-sans leading-relaxed tracking-wide;
+      min-height: 100vh;
+    }
+    
+    html.light { color-scheme: light; }
+    html.dark { color-scheme: dark; }
+
+  /* Headings and paragraph scaling */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
+
+  p {
+    @apply text-xs sm:text-sm md:text-base lg:text-lg;
+  }
+
+  /* Smooth theme transitions everywhere */
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
+  }
+
+  /* Responsive font sizes */
   html {
     font-size: 14px;
   }
-  
+
   @media (min-width: 640px) {
     html {
       font-size: 15px;
     }
   }
-  
+
   @media (min-width: 768px) {
     html {
       font-size: 16px;
     }
   }
-  
+
   @media (min-width: 1024px) {
     html {
       font-size: 16px;
     }
   }
-  
+
   @media (min-width: 1280px) {
     html {
       font-size: 17px;
     }
   }
-  
-  html.light {
-    color-scheme: light;
-  }
-  
-  html.dark {
-    color-scheme: dark;
-  }
-  
-  body {
-    @apply font-sans leading-relaxed tracking-wide transition-colors duration-300;
-    min-height: 100vh;
-    @apply bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold;
-  }
-  
-  p {
-    @apply text-xs sm:text-sm md:text-base lg:text-lg;
-  }
-  
-  /* Smooth theme transitions */
-  * {
-    @apply transition-colors duration-300;
-  }
-  
-  /* Focus styles */
-  *:focus-visible {
-    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
-  }
 }
 
+/* Utilities */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .gradient-text {
     @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
   }
-  
+
   .card-hover {
     @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out;
   }
 }
 
+/* Shimmer animation (for skeletons) */
 @keyframes shimmer {
-  100% { transform: translateX(100%); }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.8s infinite linear;
+}
+
+/* Ensure global bg/text rule has highest precedence */
+html,
+body {
+  @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;
 }
 
 .animate-shimmer {

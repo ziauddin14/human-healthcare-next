@@ -1,57 +1,18 @@
-'use client'
+"use client";
 
 /*
-  Theme Toggle Component
-  Allows users to switch between light and dark modes
- Connected to Redux uiSlice for state management
+  Theme Toggle (Disabled)
+  The site is locked to dark mode for production stability.
+  Keeping a static icon for visual consistency.
  */
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '@/store'
-import { toggleTheme, setTheme } from '@/features/ui/uiSlice'
-
 export default function ThemeToggle() {
-  const dispatch = useAppDispatch()
-  const theme = useAppSelector((state) => state.ui.theme)
-
-  // Initialize theme from localStorage on mount
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-    
-    if (savedTheme) {
-      dispatch(setTheme(savedTheme))
-    }
-  }, [dispatch])
-
-  // Apply theme to document whenever it changes
-  useEffect(() => {
-    const root = document.documentElement
-    
-    if (theme === 'dark') {
-      root.classList.add('dark')
-      root.classList.remove('light')
-    } else {
-      root.classList.add('light')
-      root.classList.remove('dark')
-    }
-    
-    // Save to localStorage
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  const handleToggleTheme = () => {
-    dispatch(toggleTheme())
-  }
-
   return (
-    <button
-      onClick={handleToggleTheme}
-      className="p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:scale-105 active:scale-95"
-      aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+    <div
+      className="p-3 rounded-xl cursor-default select-none text-xl"
+      aria-hidden
+      title="Dark mode locked"
     >
-      <span className="text-2xl transition-all duration-300 ease-in-out inline-block transform hover:rotate-12">
-        {theme === 'dark' ? '☀️' : '🌙'}
-      </span>
-    </button>
-  )
+      🌙
+    </div>
+  );
 }
-

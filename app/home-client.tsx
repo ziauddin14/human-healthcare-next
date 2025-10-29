@@ -26,7 +26,7 @@ export default function HomePageClient() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 md:mb-8 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-gray-100 mb-6 md:mb-8 leading-tight"
           >
             Healthcare at Your Doorstep
           </motion.h1>
@@ -52,7 +52,7 @@ export default function HomePageClient() {
             </Link>
             <Link
               href="/services"
-              className="inline-block border-2 border-white text-white font-bold px-8 py-4 rounded-2xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-white/50"
+              className="inline-block border-2 border-white text-white dark:text-white font-bold px-8 py-4 rounded-2xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-white/50"
             >
               Learn More
             </Link>

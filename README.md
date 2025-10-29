@@ -1,5 +1,17 @@
 # 🏥 Human Healthcare
 
+## 🌓 Theme Notice
+This project was originally designed to support both Light and Dark modes.
+Due to instability in theme synchronization across pages,
+the theme toggle has been temporarily disabled.
+The site is now locked to Dark Mode for a consistent and polished UI.
+
+✅ Fully responsive
+✅ Optimized for mobile and desktop
+✅ All animations, skeletons, and SEO settings remain unaffected
+
+_Toggle can be re-enabled in a future iteration if required._
+
 A modern, responsive healthcare web platform built with Next.js 16, featuring dark/light theming, smooth animations, and comprehensive SEO optimization.
 
 ## ✅ Project Overview

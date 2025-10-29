@@ -8,7 +8,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import ThemeToggle from '@/app/components/ThemeToggle'
+import { toggleMenu } from '@/features/ui/uiSlice'
 
 export default function Header() {
   const pathname = usePathname()
@@ -23,8 +23,9 @@ export default function Header() {
     { href: '/service-agreement', label: 'Agreement' },
   ]
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+
+  function dispatch(arg0: any): void {
+    throw new Error('Function not implemented.')
   }
 
   return (
@@ -55,11 +56,10 @@ export default function Header() {
 
           {/* Right side: Theme toggle and hamburger */}
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
             
             {/* Hamburger Menu Button (Mobile) */}
             <button
-              onClick={toggleMenu}
+              onClick={() => setIsMenuOpen(prev => !prev)}
               className="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
