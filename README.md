@@ -20,9 +20,9 @@ A modern, responsive healthcare web platform built with Next.js 16, featuring da
 - **Built with**: Next.js 16, React 19, Tailwind CSS, TypeScript, Redux Toolkit, Framer Motion, Shadcn UI
 - **Purpose**: Healthcare web platform demonstrating responsive UI, dark/light theming, SEO optimization, and page transitions.
 
-## 🧠 Features
+## 🚀 Features
 
-- 🌓 **Dark/Light Theme Toggle** (global, persistent)
+- 🌗 **Dark Mode (locked)** — consistent production styling
 - 📱 **Fully Responsive** across devices (mobile, tablet, desktop)
 - ⚡ **Framer Motion Animations** for smooth UX
 - 🧩 **Reusable Components** (Cards, Navbar, Footer, Skeleton Loaders)
@@ -97,7 +97,7 @@ A modern, responsive healthcare web platform built with Next.js 16, featuring da
         └── contactSlice.ts
 ```
 
-## ⚙️ Tech Stack
+## 🧩 Tech Stack
 
 - **Next.js 16** (App Router, Turbopack)
 - **React 19** with TypeScript
