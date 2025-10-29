@@ -5,7 +5,6 @@ import { store, useAppSelector, useAppDispatch } from '@/store'
 import { setTheme } from '@/features/ui/uiSlice'
 
 function ThemeWatcher() {
-  // Dark mode locked: no runtime theme manipulation
   return null
 }
 

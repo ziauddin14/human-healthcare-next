@@ -9,7 +9,6 @@ export default function PricingPageClient() {
   const [isFeaturesLoaded, setIsFeaturesLoaded] = useState(false)
 
   useEffect(() => {
-    // Simulate loading delays for different sections
     const pricingTimer = setTimeout(() => {
       setIsPricingLoaded(true)
     }, 1000)
@@ -141,7 +140,6 @@ export default function PricingPageClient() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {!isPricingLoaded ? (
-            // Skeleton loaders for pricing plans
             Array.from({ length: 3 }).map((_, index) => (
               <div key={index} className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
                 <Skeleton className="w-32 h-8 mb-4" />
@@ -242,7 +240,6 @@ export default function PricingPageClient() {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {!isFeaturesLoaded ? (
-            // Skeleton loaders for additional services
             Array.from({ length: 4 }).map((_, index) => (
               <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
                 <Skeleton className="w-12 h-12 mb-4 rounded-full" />

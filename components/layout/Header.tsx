@@ -1,10 +1,4 @@
 'use client'
-
-/**
- * Header Component
- * Main navigation header with logo, links, and theme toggle
- * Responsive design with mobile hamburger menu
- */
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -32,12 +26,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-lg transition-colors duration-300">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 md:py-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          
           <Link href="/" className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100 transition-all duration-500 ease-in-out hover:text-blue-600 dark:hover:text-blue-400">
             Human Healthcare
           </Link>
 
-          {/* Desktop Navigation */}
+          
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -54,10 +48,10 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Right side: Theme toggle and hamburger */}
+          
           <div className="flex items-center space-x-4">
             
-            {/* Hamburger Menu Button (Mobile) */}
+            
             <button
               onClick={() => setIsMenuOpen(prev => !prev)}
               className="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
@@ -83,7 +77,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        
         <div
           className={`md:hidden mt-4 pb-4 transition-all duration-300 ease-in-out ${
             isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'

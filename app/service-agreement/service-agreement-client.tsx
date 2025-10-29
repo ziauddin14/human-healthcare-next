@@ -7,7 +7,6 @@ export default function ServiceAgreementPageClient() {
   const [isContentLoaded, setIsContentLoaded] = useState(false)
 
   useEffect(() => {
-    // Simulate loading delay for content
     const timer = setTimeout(() => {
       setIsContentLoaded(true)
     }, 1000)
@@ -156,7 +155,6 @@ export default function ServiceAgreementPageClient() {
       {/* Agreement Sections */}
       <section className="space-y-8">
         {!isContentLoaded ? (
-          // Skeleton loaders for content
           Array.from({ length: 8 }).map((_, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
               <Skeleton className="w-48 h-6 mb-4" />

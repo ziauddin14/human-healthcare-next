@@ -1,7 +1,4 @@
-/**
- * About Page
- * Our Story and Mission
- */
+
 import { Metadata } from 'next'
 import AboutPageClient from './about-client'
 

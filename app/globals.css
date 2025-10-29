@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-  /* Base transitions and color-scheme only (colors applied at end of file) */
   @layer base {
     html {
       @apply transition-colors duration-300;
@@ -13,7 +12,6 @@
     html.light { color-scheme: light; }
     html.dark { color-scheme: dark; }
 
-  /* Headings and paragraph scaling */
   h1,
   h2,
   h3,
@@ -27,17 +25,14 @@
     @apply text-xs sm:text-sm md:text-base lg:text-lg;
   }
 
-  /* Smooth theme transitions everywhere */
   * {
     @apply transition-colors duration-300;
   }
 
-  /* Focus styles */
   *:focus-visible {
     @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
   }
 
-  /* Responsive font sizes */
   html {
     font-size: 14px;
   }
@@ -67,7 +62,6 @@
   }
 }
 
-/* Utilities */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -82,7 +76,6 @@
   }
 }
 
-/* Shimmer animation (for skeletons) */
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
@@ -93,7 +86,6 @@
   animation: shimmer 1.8s infinite linear;
 }
 
-/* Ensure global bg/text rule has highest precedence */
 html,
 body {
   @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;

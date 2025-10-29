@@ -9,10 +9,8 @@ export async function POST(request: Request) {
   try {
     const body = await request.json()
     
-    // Simulate async operation (database save, email send, etc.)
     await new Promise((resolve) => setTimeout(resolve, 1000))
     
-    // Log the submission (in production, save to database or send email)
     console.log('Contact form submission:', body)
     
     return NextResponse.json(

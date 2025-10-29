@@ -1,7 +1,3 @@
-/**
- * Home Page
- * Healthcare at Your Doorstep
- */
 import { Metadata } from 'next'
 import HomePageClient from './home-client'
 

@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Skeleton } from '@/app/components/ui/skeleton'
 
-// Zod validation schema
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
@@ -24,7 +23,6 @@ export default function ContactPageClient() {
   const [isContactInfoLoaded, setIsContactInfoLoaded] = useState(false)
 
   useEffect(() => {
-    // Simulate loading delay for contact info
     const timer = setTimeout(() => {
       setIsContactInfoLoaded(true)
     }, 1000)
@@ -42,15 +40,10 @@ export default function ContactPageClient() {
   })
 
   const onSubmit = async (data: ContactFormData) => {
-    try {
-      await dispatch(submitContactForm(data)).unwrap()
-      reset()
-    } catch (error) {
-      console.error('Form submission error:', error)
-    }
+    await dispatch(submitContactForm(data)).unwrap()
+    reset()
   }
 
-  // Reset success/error messages after 5 seconds
   useEffect(() => {
     if (success || error) {
       const timer = setTimeout(() => {

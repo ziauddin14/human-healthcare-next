@@ -1,7 +1,4 @@
-/**
- * Service Agreement Page
- * Terms, conditions, and client commitments
- */
+
 import { Metadata } from 'next'
 import ServiceAgreementPageClient from './service-agreement-client'
 

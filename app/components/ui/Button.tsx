@@ -1,7 +1,4 @@
-/**
- * Button Component
- * Reusable button component with variants
- */
+
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

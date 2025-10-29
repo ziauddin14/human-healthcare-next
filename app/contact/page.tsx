@@ -1,7 +1,4 @@
-/**
- * Contact Page
- * Fully functional contact form with validation and Redux state management
- */
+
 import { Metadata } from 'next'
 import ContactPageClient from './contact-client'
 

@@ -1,7 +1,4 @@
-/**
- * Card Component
- * Reusable card container component
- */
+
 import { ReactNode } from 'react'
 
 interface CardProps {

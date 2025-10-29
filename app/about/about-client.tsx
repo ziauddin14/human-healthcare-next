@@ -8,12 +8,11 @@ export default function AboutPageClient() {
   const [isFeaturesLoaded, setIsFeaturesLoaded] = useState(false)
 
   useEffect(() => {
-    // Simulate loading delay for the mission section
     const missionTimer = setTimeout(() => {
       setIsMissionLoaded(true)
     }, 1000)
 
-    // Simulate loading delay for the features section
+    
     const featuresTimer = setTimeout(() => {
       setIsFeaturesLoaded(true)
     }, 1500)
@@ -26,7 +25,7 @@ export default function AboutPageClient() {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-      {/* Hero Section */}
+      
       <section className="text-center mb-12 md:mb-20">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
@@ -46,7 +45,7 @@ export default function AboutPageClient() {
         </motion.p>
       </section>
 
-      {/* Mission Section */}
+      
       <section className="mb-12 md:mb-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -57,17 +56,17 @@ export default function AboutPageClient() {
         >
           {!isMissionLoaded ? (
             <div className="space-y-6">
-              {/* Skeleton for heading */}
+              
               <Skeleton className="w-64 h-8 sm:h-10 md:h-12 rounded-lg" />
               
-              {/* Skeleton for first paragraph */}
+              
               <div className="space-y-3">
                 <Skeleton className="w-full h-4 rounded" />
                 <Skeleton className="w-full h-4 rounded" />
                 <Skeleton className="w-3/4 h-4 rounded" />
               </div>
               
-              {/* Skeleton for second paragraph */}
+              
               <div className="space-y-3">
                 <Skeleton className="w-full h-4 rounded" />
                 <Skeleton className="w-5/6 h-4 rounded" />
@@ -93,10 +92,10 @@ export default function AboutPageClient() {
         </motion.div>
       </section>
 
-      {/* Key Features */}
+      
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-20">
         {!isFeaturesLoaded ? (
-          // Skeleton loaders for features
+          
           Array.from({ length: 4 }).map((_, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
               <Skeleton className="w-16 h-16 mb-4 rounded-full" />
@@ -169,7 +168,7 @@ export default function AboutPageClient() {
         )}
       </section>
 
-      {/* Stats Section */}
+      
       <motion.section 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

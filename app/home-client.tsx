@@ -8,7 +8,6 @@ export default function HomePageClient() {
   const [isServicesLoaded, setIsServicesLoaded] = useState(false)
 
   useEffect(() => {
-    // Simulate loading delay for the services section
     const timer = setTimeout(() => {
       setIsServicesLoaded(true)
     }, 1500)
@@ -75,7 +74,6 @@ export default function HomePageClient() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {!isServicesLoaded ? (
-              // Skeleton loaders
               Array.from({ length: 4 }).map((_, index) => (
                 <div key={index} className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 p-6 md:p-8 lg:p-10 rounded-2xl shadow-md">
                   <Skeleton className="w-16 h-16 mb-6 rounded-full" />

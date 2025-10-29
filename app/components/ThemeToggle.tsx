@@ -1,10 +1,5 @@
 "use client";
 
-/*
-  Theme Toggle (Disabled)
-  The site is locked to dark mode for production stability.
-  Keeping a static icon for visual consistency.
- */
 export default function ThemeToggle() {
   return (
     <div

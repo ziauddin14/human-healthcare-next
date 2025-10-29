@@ -1,7 +1,4 @@
-/**
- * Pricing Page
- * Transparent pricing plans for healthcare services
- */
+
 import { Metadata } from 'next'
 import PricingPageClient from './pricing-client'
 

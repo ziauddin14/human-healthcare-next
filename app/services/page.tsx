@@ -1,7 +1,4 @@
-/**
- * Services Page
- * Comprehensive Healthcare Services
- */
+
 import { Metadata } from 'next'
 import ServicesPageClient from './services-client'
 
