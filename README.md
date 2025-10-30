@@ -1,38 +1,38 @@
-# 🏥 Human Healthcare
+# Human Healthcare
 
-## 🌓 Theme Notice
+## Theme Notice
 This project was originally designed to support both Light and Dark modes.
 Due to instability in theme synchronization across pages,
 the theme toggle has been temporarily disabled.
 The site is now locked to Dark Mode for a consistent and polished UI.
 
-✅ Fully responsive
-✅ Optimized for mobile and desktop
-✅ All animations, skeletons, and SEO settings remain unaffected
+Fully responsive
+Optimized for mobile and desktop
+ All animations, skeletons, and SEO settings remain unaffected
 
 _Toggle can be re-enabled in a future iteration if required._
 
 A modern, responsive healthcare web platform built with Next.js 16, featuring dark/light theming, smooth animations, and comprehensive SEO optimization.
 
-## ✅ Project Overview
+##  Project Overview
 
 - **Project Name**: Human Healthcare
 - **Built with**: Next.js 16, React 19, Tailwind CSS, TypeScript, Redux Toolkit, Framer Motion, Shadcn UI
 - **Purpose**: Healthcare web platform demonstrating responsive UI, dark/light theming, SEO optimization, and page transitions.
 
-## 🚀 Features
+##  Features
 
-- 🌗 **Dark Mode (locked)** — consistent production styling
-- 📱 **Fully Responsive** across devices (mobile, tablet, desktop)
-- ⚡ **Framer Motion Animations** for smooth UX
-- 🧩 **Reusable Components** (Cards, Navbar, Footer, Skeleton Loaders)
-- 🧭 **SEO Optimized** meta tags on each page
-- 🛠️ **TypeScript + Redux Toolkit** integrated for scalability
-- 🔄 **Skeleton Components** (Shadcn) for smooth loading placeholders
-- 📊 **Contact Form** with validation and Redux state management
-- 🎨 **Consistent Design System** with Tailwind CSS
+-  **Dark Mode (locked)** — consistent production styling
+-  **Fully Responsive** across devices (mobile, tablet, desktop)
+-  **Framer Motion Animations** for smooth UX
+- **Reusable Components** (Cards, Navbar, Footer, Skeleton Loaders)
+-  **SEO Optimized** meta tags on each page
+-  **TypeScript + Redux Toolkit** integrated for scalability
+-  **Skeleton Components** (Shadcn) for smooth loading placeholders
+- **Contact Form** with validation and Redux state management
+-  **Consistent Design System** with Tailwind CSS
 
-## 🧾 Pages Overview
+##  Pages Overview
 
 | Page | Path | Purpose |
 |------|------|----------|
@@ -43,7 +43,7 @@ A modern, responsive healthcare web platform built with Next.js 16, featuring da
 | Service Agreement | `/service-agreement` | Terms & service conditions |
 | Contact | `/contact` | Contact form + business info |
 
-## 🗂️ Folder Structure
+##  Folder Structure
 
 ```
 /app
@@ -97,7 +97,7 @@ A modern, responsive healthcare web platform built with Next.js 16, featuring da
         └── contactSlice.ts
 ```
 
-## 🧩 Tech Stack
+##  Tech Stack
 
 - **Next.js 16** (App Router, Turbopack)
 - **React 19** with TypeScript
@@ -108,7 +108,7 @@ A modern, responsive healthcare web platform built with Next.js 16, featuring da
 - **Zod + React Hook Form** for validation
 - **clsx + tailwind-merge** for utility functions
 
-## 🧱 Setup Instructions
+##  Setup Instructions
 
 ### Prerequisites
 - Node.js 18+ 
@@ -144,7 +144,7 @@ npm run lint         # Run ESLint
 npm run type-check   # Run TypeScript compiler
 ```
 
-## 🧑‍💻 Development Notes
+## Development Notes
 
 ### Responsive Design
 - Responsive typography handled with Tailwind responsive classes
@@ -169,7 +169,7 @@ npm run type-check   # Run TypeScript compiler
 - Hover effects and micro-interactions
 - Non-blocking animations for performance
 
-## 📦 Deployment Notes
+## Deployment Notes
 
 ### Build Command
 ```bash
@@ -195,7 +195,7 @@ NEXT_PUBLIC_PHONE=+923192060174
 - Code splitting and lazy loading
 - Tailwind CSS JIT compilation
 
-## 🎨 Design System
+##  Design System
 
 ### Colors
 - **Primary**: Blue scale (50-950)
@@ -213,7 +213,7 @@ NEXT_PUBLIC_PHONE=+923192060174
 - **Sections**: py-12 md:py-20
 - **Cards**: p-6 md:p-8 lg:p-10
 
-## 🔧 Configuration Files
+## Configuration Files
 
 ### Tailwind CSS
 - Custom color palette
@@ -232,20 +232,20 @@ NEXT_PUBLIC_PHONE=+923192060174
 - Font optimization
 - Metadata API
 
-## 📝 Commit History Highlights
+##  Commit History Highlights
 
 | Commit | Description |
 |--------|-------------|
-| 🧱 init project | Next.js setup with Tailwind & TypeScript |
-| 🎨 UI base layout | Navbar, Footer, Home page setup |
-| 🌗 Theme toggle fix | Global dark/light mode implementation |
-| 📱 Responsive polish | Font scaling, spacing adjustments |
-| ⚡ Animations added | Framer Motion transitions |
-| 🧩 Skeleton loading | Added across cards & sections |
-| ✨ Pricing + Agreement | New pages with SEO metadata |
-| 🧾 Docs ready | Added README + Sitemap Audit |
+|  init project | Next.js setup with Tailwind & TypeScript |
+|  UI base layout | Navbar, Footer, Home page setup |
+|  Theme toggle fix | Global dark/light mode implementation |
+|  Responsive polish | Font scaling, spacing adjustments |
+|  Animations added | Framer Motion transitions |
+|  Skeleton loading | Added across cards & sections |
+|  Pricing + Agreement | New pages with SEO metadata |
+|  Docs ready | Added README + Sitemap Audit |
 
-## 🚀 Getting Started
+##  Getting Started
 
 1. **Clone the repository**
 2. **Install dependencies**: `npm install`
@@ -253,7 +253,7 @@ NEXT_PUBLIC_PHONE=+923192060174
 4. **Open browser**: Navigate to `http://localhost:3000`
 5. **Test features**: Try theme toggle, responsive design, and page navigation
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -261,11 +261,11 @@ NEXT_PUBLIC_PHONE=+923192060174
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
-## 📞 Support
+## Support
 
 For questions or support, contact:
 - **Email**: service@human-healthcare.com
@@ -274,4 +274,4 @@ For questions or support, contact:
 
 ---
 
-**Built with ❤️ for better healthcare accessibility**
+**Built with love for better healthcare accessibility**
